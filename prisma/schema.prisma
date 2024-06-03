@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Definição da tabela 'Account'
+model Account {
+  id                 Int       @id @default(autoincrement())
+  id_user            Int
+  providerType       String
+  providerId         String
+  providerAccountId  String
+  refreshToken       String?
+  accessToken        String?
+  accessTokenExpires DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @default(now()) @updatedAt()
+
+  // Relacionamento com a tabela 'User'
+  user User @relation(fields: [id_user], references: [id])
+}
+
+// Definição da tabela 'Session'
+model Session {
+  id           Int      @id @default(autoincrement())
+  id_user      Int
+  expires      DateTime
+  sessionToken String
+  accessToken  String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt()
+
+  // Relacionamento com a tabela 'User'
+  user User @relation(fields: [id_user], references: [id])
+}
+
+// Definição da tabela 'User'
+
+model User {
+  id            Int       @id @default(autoincrement())
+  nome          String
+  email         String    @unique
+  emailVerified DateTime?
+  cpf           String    @unique
+  celular       String
+  senha         String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt()
+
+  // Relacionamento com a tabela 'Account'
+  accounts Account[]
+
+  // Relacionamento com a tabela 'Session'
+  sessions Session[]
+
+  // Relacionamento com a tabela 'UserType'
+  userTypes UserType[] @relation("UserTypeUser")
+}
+
+// Definição da tabela 'UserType'
+model UserType {
+  id          Int      @id @default(autoincrement())
+  type        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt()
+
+  // Relacionamento com a tabela 'User'
+  users User[] @relation("UserTypeUser")
+}
+
+// Definição da tabela 'VerificationRequest'
+// model VerificationRequest {
+//   id         Int      @id @default(autoincrement())
+//   identifier String
+//   token      String   @unique
+//   expires    DateTime
+//   createdAt  DateTime @default(now())
+//   updatedAt  DateTime @updatedAt()
+// }

@@ -1,0 +1,1 @@
+export const apenasNumeros = (valor) => valor.replace(/\D/g, '');
