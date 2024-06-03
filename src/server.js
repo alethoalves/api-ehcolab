@@ -6,7 +6,7 @@ import https from 'https';
 import { reqIntercepter } from './middlewares/reqIntercepter.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import publicRoutes from "./routes/public.js";
-import routerAdminAuth from './routes/admin/adminAuth.js';
+import routerAuth from './routes/authRoute.js';
 import routerAdmin from './routes/admin/adminRoutes.js';
 
 const app = express();
@@ -20,7 +20,7 @@ app.use(errorHandler);
 
 app.all('*',reqIntercepter);
 
-app.use('/admin/auth', routerAdminAuth);
+app.use('/auth', routerAuth);
 app.use('/admin', routerAdmin);
 
 app.use('/',publicRoutes);

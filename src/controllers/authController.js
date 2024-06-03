@@ -20,7 +20,9 @@ export const signup = async (req, res) => {
         const { confirmacaoSenha, ...userData } = body.data;
 
         // Verificar se o CPF e/ou EMAIL já está em uso
-        const existingUserByCpfOrEmail = await db.user.findFirst({where: {OR: [{ cpf:userData.cpf },{ email:userData.email }]}});
+        const existingUserByCpfOrEmail = await db.user.findFirst({
+            where:  {email:userData.email}
+        });
 
         if (existingUserByCpfOrEmail) {
             return res.status(409).json({

@@ -14,7 +14,7 @@ export const validatePassword = (password) => {
 
 
 export const createToken = (user) => {
-    if (!user || !user.id || !user.email || !user.nome || !user.cpf) {
+    if (!user || !user.id || !user.email || !user.nome ) {
         throw new Error('Usuário inválido ou faltando campos necessários.');
     }
 
@@ -25,7 +25,6 @@ export const createToken = (user) => {
             id: user.id,
             email: user.email,
             nome: user.nome,
-            cpf: user.cpf
         }, process.env.JWT_SECRET_KEY, { expiresIn });
 
         console.log('Token criado com sucesso para o usuário:', user.id);

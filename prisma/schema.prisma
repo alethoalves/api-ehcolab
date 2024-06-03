@@ -51,7 +51,6 @@ model User {
   nome          String
   email         String    @unique
   emailVerified DateTime?
-  cpf           String    @unique
   celular       String
   senha         String
   createdAt     DateTime  @default(now())

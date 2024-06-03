@@ -17,12 +17,7 @@ export const signupSchema = z.object({
         z.string({ message: 'Celular é obrigatório!' }).trim()
         .length(11, { message: 'Celular deve ter 11 dígitos!' })
       ),
-    cpf: z
-      .preprocess((val) => apenasNumeros(String(val)),
-        z.string({ message: 'CPF é obrigatório!' }).trim()
-        .length(11, { message: 'CPF deve ter 11 dígitos!' })
-        .refine((value) => cpfValidator(value), { message: 'CPF inválido!' }),
-      ),
+    
     senha: z
       .string({ message: 'Senha é obrigatória!' }).trim()
       .min(1, 'Campo obrigatório!')
