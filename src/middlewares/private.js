@@ -1,6 +1,6 @@
 import JWT from "jsonwebtoken";
 
-export const privateRouteAdmin = ((req, res, next) => {
+export const privateRoute = ((req, res, next) => {
     let success = false;
 
     // Fazer verificação de auth

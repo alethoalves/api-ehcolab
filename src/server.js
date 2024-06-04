@@ -7,7 +7,7 @@ import { reqIntercepter } from './middlewares/reqIntercepter.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import publicRoutes from "./routes/public.js";
 import routerAuth from './routes/authRoute.js';
-import routerAdmin from './routes/admin/adminRoutes.js';
+import privateRoutes from './routes/privateRoutes.js';
 
 const app = express();
 
@@ -21,7 +21,7 @@ app.use(errorHandler);
 app.all('*',reqIntercepter);
 
 app.use('/auth', routerAuth);
-app.use('/admin', routerAdmin);
+app.use('/private', privateRoutes);
 
 app.use('/',publicRoutes);
 
