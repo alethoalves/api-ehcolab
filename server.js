@@ -3,11 +3,11 @@ import express from 'express';
 import cors from 'cors';
 import http from 'http';
 import https from 'https';
-import { reqIntercepter } from './middlewares/reqIntercepter.js';
-import { errorHandler } from './middlewares/errorHandler.js';
-import publicRoutes from "./routes/public.js";
-import routerAuth from './routes/authRoute.js';
-import privateRoutes from './routes/privateRoutes.js';
+import { reqIntercepter } from './src/middlewares/reqIntercepter.js';
+import { errorHandler } from './src/middlewares/errorHandler.js';
+import publicRoutes from "./src/routes/public.js";
+import routerAuth from './src/routes/authRoute.js';
+import privateRoutes from './src/routes/privateRoutes.js';
 
 const app = express();
 

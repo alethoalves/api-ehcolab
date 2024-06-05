@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import * as servicesAuth from '../app/services/servicesAuth.js';
-import { db } from '../app/libs/prisma.js';
-import { signupSchema, signinSchema } from "../app/zodSchemas/authSchema.js";
-import { hash, compare } from "../app/services/hash.js";
+import * as servicesAuth from '../services/servicesAuth.js';
+import { db } from '../libs/prisma.js';
+import { signupSchema, signinSchema } from "../zodSchemas/authSchema.js";
+import { hash, compare } from "../services/hash.js";
 // Função de signup
 export const signup = async (req, res) => {
     try {
