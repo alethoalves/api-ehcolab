@@ -79,7 +79,7 @@ export const signin = async (req, res) => {
         // Retornar o token
         res.status(201).json({ success: {
             message: "Usuário logado.",
-            token
+            token 
         } });
     } catch (error) {
         // Captura qualquer erro que possa ocorrer na consulta ao banco de dados
