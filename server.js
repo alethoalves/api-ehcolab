@@ -25,18 +25,7 @@ app.use('/private', privateRoutes);
 
 app.use('/',publicRoutes);
 
-const runServer = (port, server) => {
-  server.listen(port,()=>{
-    console.log(`🚀 Servidor rodando na porta ${port}`);
-  })
-}
+app.listen(process.env.PORT,()=>{
+  console.log(`🚀 Servidor rodando na porta ${process.env.BASE}`)
+})
 
-const developmentServer = http.createServer(app)
-
-if(process.env.NODE_ENV === 'production'){
-  //TODO: configurar SSL
-  //TODO: rodar o server na porta 80 e na porta 443
-} else {
-  const serverPort = process.env.PORT ? parseInt(process.env.PORT) : 9000
-  runServer(serverPort, developmentServer)
-}
