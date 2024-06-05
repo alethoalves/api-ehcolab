@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "startdev": "nodemon",
-    "migrate-and-build":"prisma migrate deploy && npm run start"
+    "migrate":"prisma migrate deploy"
   },
   "author": "",
   "license": "ISC",
