@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "startdev": "nodemon"
+    "startdev": "nodemon",
+    "migrate-and-build":"prisma migrate deploy && npm run start"
   },
   "author": "",
   "license": "ISC",
